@@ -1,3 +1,5 @@
+# this is a good algorithm if we have any kind of sequence (decreasing or increasing)
+
 n = int(input())
 nums = list(map(int, input().split()))
 
@@ -24,3 +26,18 @@ if nums == sorted(nums):
     print("YES")
 else:
     print("NO")
+
+# if we are sure that sequence is permutation to length n contains numbers 1 to n it would be easier
+
+n = int(input())
+a = list(map(int, input().split()))
+# count bad numbers
+count = 0
+for i in range(n):
+    if a[i] - 1 != i:
+        count = count + 1
+
+if count == 2:
+    print('YES')
+else:
+    print('NO')
