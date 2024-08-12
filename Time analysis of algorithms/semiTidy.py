@@ -1,17 +1,26 @@
 n = int(input())
 nums = list(map(int, input().split()))
 
-count = 0
-maximum = max(nums)
-max_index = nums.index(maximum)
-if (nums[len(nums)-1] != maximum):
-    nums[len(nums)-1], nums[max_index] = maximum, nums[len(nums)-1]
-    count += 1
-nums.remove(maximum)
-nums1 = sorted(nums)
-if (nums == nums1):
-    print("YES")
-    exit()
-else:
+
+if nums == sorted(nums):
     print("NO")
     exit()
+
+first_decreasing = -1
+for i in range(n - 1):
+    if nums[i] > nums[i + 1]:
+        first_decreasing = i
+        break
+
+last_decreasing = -1
+for i in range(n - 1, 0, -1):
+    if nums[i] < nums[i - 1]:
+        last_decreasing = i
+        break
+
+nums[first_decreasing], nums[last_decreasing] = nums[last_decreasing], nums[first_decreasing]
+
+if nums == sorted(nums):
+    print("YES")
+else:
+    print("NO")
